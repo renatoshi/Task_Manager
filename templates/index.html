@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <a href="{{ url_for('add_task') }}" class="bg-blue-500 text-white py-2 px-4 rounded">Add Task</a>
+</div>
+<ul class="mt-4">
+    {% for task in tasks %}
+    <li class="bg-white p-4 mb-2 rounded shadow flex justify-between items-center">
+        <span>{{ task.title }} - {% if task.done %}Done{% else %}Pending{% endif %}</span>
+        <div>
+            <a href="{{ url_for('update_task', task_id=task.id) }}" class="text-blue-500">Edit</a>
+            <a href="{{ url_for('delete_task', task_id=task.id) }}" class="text-red-500 ml-2">Delete</a>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

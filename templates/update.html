@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="{{url_for('update_task', task_id=task.id)}}" method="POST" class="bg-white p-4 rounded shadow">
+    <label for="title" class="block text-gray-700">Task Title:</label>
+    <input type="text" name="title" id="title" value="{{ task.title }}" class="w-full p-2 border rounded mt-2"    >
+    <label for="done" class="block mt-4">
+        <input type="checkbox" name="done" id="done" {% if task.done %}Checked{% endif %}>
+        Mark as Done
+    </label>
+    <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded mt-44">Update Task</button>
+    <a href="{{ url_for('index')}}" class="bg-orange-400 text-white py-2 px-4 rounded mt-44">Back</a>
+</form>
+
+{% endblock %}
